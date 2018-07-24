@@ -1,13 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:orientation="horizontal"
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/loading_indicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:tooltipText="Title"/>
+        android:text="@string/loading"/>
+    <LinearLayout
+        android:id="@+id/title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentTop="true">
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:tooltipText="Title"
+            android:paddingLeft="15dp"
+            android:layout_weight="1"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/title_layout">
+    <TextView
+        android:id="@+id/name_of_section"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:tooltipText="Name of Section"
+        android:paddingLeft="15dp"
+        android:layout_weight="1"/>
 
-
-</LinearLayout>
+    <TextView
+        android:id="@+id/author"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:tooltipText="Author"
+        android:paddingLeft="15dp"
+        android:layout_weight="1"
+        />
+    <TextView
+        android:id="@+id/date_published"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:tooltipText="Date Published"
+        android:paddingLeft="15dp"
+        android:layout_weight="1"/>
+    </LinearLayout>
+</RelativeLayout>

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Udacity News App</string>
+    <string name="loading">Loading</string>
 </resources>
