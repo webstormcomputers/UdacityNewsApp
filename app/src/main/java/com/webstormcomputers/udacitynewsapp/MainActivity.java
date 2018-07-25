@@ -1,19 +1,15 @@
 package com.webstormcomputers.udacitynewsapp;
 
-import android.app.LoaderManager;
 import android.app.LoaderManager.LoaderCallbacks;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.Loader;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
-
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-
 import android.widget.AdapterView;
 import android.widget.ListView;
 
@@ -21,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity
-        implements LoaderManager.LoaderCallbacks<List<News>> {
+        implements LoaderCallbacks<List<News>> {
     private final String GUARDIAN_URL = "http://content.guardianapis.com/search?q=homebirth&&show-tags=contributor&api-key=c742eda9-d73d-43de-ab7d-4ecb7ecebf7b";
 
     private NewsAdapter nAdapter;
@@ -64,10 +60,16 @@ public class MainActivity extends AppCompatActivity
 
     public void onLoadFinished(Loader<List<News>> loader, List<News> data) {
         nAdapter.clear();
+        //TextView loadingIndicator = findViewById(R.id.loading_indicator);
+        //loadingIndicator.setText("on Load finished");
     }
 
-    public Loader<List<News>> onCreateLoader(int i){
+    @Override
+    public Loader<List<News>> onCreateLoader(int i, Bundle bundle){
+        //TextView loadingIndicator = findViewById(R.id.loading_indicator);
+        //loadingIndicator.setText("onCreateLoad Called");
         return new NewsLoader(MainActivity.this, GUARDIAN_URL);
+
     }
 
     @Override

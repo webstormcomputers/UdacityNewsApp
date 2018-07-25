@@ -106,14 +106,20 @@ public class QueryList {
                 String title = jsonObject.getString("webTitle");
                 String nameOfSection = jsonObject.optString("sectionName");
                 JSONArray tags = jsonObject.getJSONArray("tags");
-                JSONObject tabsObject = tags.getJSONObject(0);
-                String author = tabsObject.getString("webTitle");
                 String datetime = jsonObject.getString("webPublicationDate");
                 String webUrl = jsonObject.optString("webUrl").toString();
-                news.add(new News(title,nameOfSection,author,datetime,webUrl));
+                JSONArray tagsArray = jsonObject.getJSONArray("tages");
+                if (tagsArray.length() > 0 )
+                {
+                    JSONObject tabsObject = tags.getJSONObject(0);
+                    String author = tabsObject.getString("webTitle");
+                    news.add(new News(title, nameOfSection, author, datetime, webUrl));
+                }
+
+                news.add(new News(title, nameOfSection, datetime, webUrl));
             }
         } catch (JSONException e) {
-            Log.e("QueryUtils", "Problem passing the earthquake Json results", e);
+            Log.e("QueryUtils", "Problem passing the Guardian News Json results", e);
         }
         return news;
     }

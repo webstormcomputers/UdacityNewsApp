@@ -26,7 +26,9 @@ public class NewsLoader extends AsyncTaskLoader<List<News>> {
     }
 
     @Override
-    protected void onStartLoading() { forceLoad(); }
+    protected void onStartLoading() {
+        forceLoad();
+    }
 
     /**
      * This is on a background thread.
