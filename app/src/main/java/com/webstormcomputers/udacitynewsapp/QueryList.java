@@ -108,7 +108,7 @@ public class QueryList {
                 JSONArray tags = jsonObject.getJSONArray("tags");
                 String datetime = jsonObject.getString("webPublicationDate");
                 String webUrl = jsonObject.optString("webUrl").toString();
-                JSONArray tagsArray = jsonObject.getJSONArray("tages");
+                JSONArray tagsArray = jsonObject.getJSONArray("tags");
                 if (tagsArray.length() > 0 )
                 {
                     JSONObject tabsObject = tags.getJSONObject(0);
