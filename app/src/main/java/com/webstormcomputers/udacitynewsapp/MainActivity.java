@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
 
 
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity
         final ListView newsListView = (ListView) findViewById(R.id.list_view);
 
         newsListView.setAdapter(nAdapter);
+
         newsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -48,18 +50,24 @@ public class MainActivity extends AppCompatActivity
 
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
 
+
         if (networkInfo != null && networkInfo.isConnected()) {
 
             getLoaderManager().initLoader(0, null, this).forceLoad();
 
-        } else {
-            View loadingIndicator = findViewById(R.id.loading_indicator);
-            loadingIndicator.setVisibility(View.GONE);
+
         }
     }
 
     public void onLoadFinished(Loader<List<News>> loader, List<News> data) {
-        nAdapter.clear();
+        if (data != null) {
+            nAdapter.setNotifyOnChange(false);
+            nAdapter.clear();
+            nAdapter.setNotifyOnChange(true);
+            nAdapter.addAll(data);
+
+        }
+
         //TextView loadingIndicator = findViewById(R.id.loading_indicator);
         //loadingIndicator.setText("on Load finished");
     }
