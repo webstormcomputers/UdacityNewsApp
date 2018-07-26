@@ -7,15 +7,6 @@ public class News {
     private final String nDatePublished;
     private final String nURL;
 
-    News (String title, String nameOfSection, String datePublished, String Url) {
-        nTitle = title;
-        nNameOfSection = nameOfSection;
-        nDatePublished = datePublished;
-        nURL = Url;
-    }
-
-
-
     /**
      * Constructor with all data
      * @param title
@@ -31,12 +22,6 @@ public class News {
         nDatePublished = datePublished;
         nURL = Url;
     }
-
-
-
-
-
-
 
     String getTitle() { return nTitle; }
     String getNameOfSection() { return nNameOfSection; }

@@ -108,15 +108,17 @@ public class QueryList {
                 JSONArray tags = jsonObject.getJSONArray("tags");
                 String datetime = jsonObject.getString("webPublicationDate");
                 String webUrl = jsonObject.optString("webUrl").toString();
+                String author;
                 JSONArray tagsArray = jsonObject.getJSONArray("tags");
                 if (tagsArray.length() > 0 )
                 {
                     JSONObject tabsObject = tags.getJSONObject(0);
-                    String author = tabsObject.getString("webTitle");
-                    news.add(new News(title, nameOfSection, author, datetime, webUrl));
+                    author = tabsObject.getString("webTitle");
                 }
-
-                news.add(new News(title, nameOfSection, datetime, webUrl));
+                else {
+                    author = null;
+                }
+                news.add(new News(title, nameOfSection, author, datetime, webUrl));
             }
         } catch (JSONException e) {
             Log.e("QueryUtils", "Problem passing the Guardian News Json results", e);
