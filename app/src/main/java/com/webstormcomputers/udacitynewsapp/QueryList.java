@@ -20,10 +20,7 @@ import java.util.List;
 public class QueryList {
     public static final String LOG_TAG = QueryList.class.getSimpleName();
 
-    private QueryList() {
-    }
-
-    public static List<News> getNews(String newsUrl) {
+       public static List<News> getNews(String newsUrl) {
         URL queryUrl = createUrl(newsUrl);
 
         String guardianJsonResponse = null;
@@ -41,6 +38,7 @@ public class QueryList {
             url = new URL(stringUrl);
         } catch (MalformedURLException e){
             Log.e(LOG_TAG, "URL creation failure", e);
+
         }
         return url;
     }

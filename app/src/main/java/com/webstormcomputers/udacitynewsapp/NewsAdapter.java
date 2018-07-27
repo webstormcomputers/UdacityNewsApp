@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-
 import java.util.List;
 
 public class NewsAdapter extends ArrayAdapter<News> {
@@ -24,6 +23,7 @@ public class NewsAdapter extends ArrayAdapter<News> {
                     R.layout.list_item, parent, false);
         }
         News currentNews = getItem(position);
+
         TextView txtTitle = (TextView) listItemView.findViewById(R.id.title);
         TextView txtNameOfSection = (TextView) listItemView.findViewById(R.id.name_of_section);
         txtTitle.setText(currentNews.getTitle());
@@ -44,4 +44,6 @@ public class NewsAdapter extends ArrayAdapter<News> {
 
         return listItemView;
     }
+
+
 }
