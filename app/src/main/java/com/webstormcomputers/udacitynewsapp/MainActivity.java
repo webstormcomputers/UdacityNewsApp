@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         swipe = (SwipeRefreshLayout) findViewById(R.id.swipeRefresh);
+        swipe.setOnRefreshListener(this);
 
         nAdapter = new NewsAdapter(this, new ArrayList<News>());
 
@@ -50,13 +52,14 @@ public class MainActivity extends AppCompatActivity
 
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
 
-
         if (networkInfo != null && networkInfo.isConnected()) {
 
             getLoaderManager().initLoader(0, null, this).forceLoad();
         }
         else {
-            Toast.makeText(this, "Check your internet connection and pull down to retry", Toast.LENGTH_LONG).show();
+            TextView loadingMessage = (TextView) findViewById(R.id.loading_message);
+            loadingMessage.setText("Check your internet connetion and swipe down to retry.");
+            loadingMessage.setVisibility(View.VISIBLE);
         }
     }
 
@@ -67,15 +70,11 @@ public class MainActivity extends AppCompatActivity
             nAdapter.clear();
             nAdapter.setNotifyOnChange(true);
             nAdapter.addAll(data);
-
         }
-
     }
 
     @Override
     public Loader<List<News>> onCreateLoader(int i, Bundle bundle){
-        //TextView loadingIndicator = findViewById(R.id.loading_indicator);
-        //loadingIndicator.setText("onCreateLoad Called");
         return new NewsLoader(MainActivity.this, GUARDIAN_URL);
 
     }
@@ -88,10 +87,8 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onRefresh() {
+        TextView loadingMessage = (TextView) findViewById(R.id.loading_message);
+        loadingMessage.setVisibility(View.GONE);
         getLoaderManager().initLoader(0, null, this).forceLoad();
     }
 }
-
-
-
-

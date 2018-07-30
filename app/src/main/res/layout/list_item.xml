@@ -17,7 +17,8 @@
             android:layout_height="wrap_content"
             android:tooltipText="Title"
             android:paddingLeft="15dp"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:focusable="false"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,7 +31,8 @@
         android:layout_height="wrap_content"
         android:tooltipText="Name of Section"
         android:paddingLeft="15dp"
-        android:layout_weight="1"/>
+        android:layout_weight="1"
+        android:focusable="false"/>
 
     <TextView
         android:id="@+id/author"
@@ -39,6 +41,7 @@
         android:tooltipText="Author"
         android:paddingLeft="15dp"
         android:layout_weight="1"
+        android:focusable="false"
         />
     <TextView
         android:id="@+id/date_published"
@@ -46,6 +49,7 @@
         android:layout_height="wrap_content"
         android:tooltipText="Date Published"
         android:paddingLeft="15dp"
-        android:layout_weight="1"/>
+        android:layout_weight="1"
+        android:focusable="false"/>
     </LinearLayout>
 </RelativeLayout>

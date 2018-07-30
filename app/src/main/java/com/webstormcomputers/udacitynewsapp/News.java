@@ -1,11 +1,11 @@
 package com.webstormcomputers.udacitynewsapp;
 
 public class News {
-    private final String nTitle;
-    private final String nNameOfSection;
-    private String nAuthor;
-    private final String nDatePublished;
-    private final String nURL;
+    private final String mTitle;
+    private final String mNameOfSection;
+    private String mAuthor;
+    private final String mDatePublished;
+    private final String mURL;
 
     /**
      * Constructor with all data
@@ -16,16 +16,16 @@ public class News {
      * @param Url
      */
     News(String title, String nameOfSection, String author, String datePublished, String Url) {
-        nTitle = title;
-        nNameOfSection = nameOfSection;
-        nAuthor = author;
-        nDatePublished = datePublished;
-        nURL = Url;
+        mTitle = title;
+        mNameOfSection = nameOfSection;
+        mAuthor = author;
+        mDatePublished = datePublished;
+        mURL = Url;
     }
 
-    String getTitle() { return nTitle; }
-    String getNameOfSection() { return nNameOfSection; }
-    String getAuthor() { return nAuthor; }
-    String getDatePublished() { return nDatePublished; }
-    String getUrl() {return nURL;}
+    String getTitle() { return mTitle; }
+    String getNameOfSection() { return mNameOfSection; }
+    String getAuthor() { return mAuthor; }
+    String getDatePublished() { return mDatePublished; }
+    String getUrl() {return mURL;}
 }
