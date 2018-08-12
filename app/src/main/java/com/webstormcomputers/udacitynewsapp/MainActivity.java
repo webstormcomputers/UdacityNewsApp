@@ -21,7 +21,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity
         implements SwipeRefreshLayout.OnRefreshListener, LoaderCallbacks<List<News>> {
-    private final String GUARDIAN_URL = "http://content.guardianapis.com/search?q=homebirth&&show-tags=contributor&api-key=c742eda9-d73d-43de-ab7d-4ecb7ecebf7b";
+    private final String GUARDIAN_URL = "http://content.guardianapis.com/search?";
 
     private NewsAdapter nAdapter;
     SwipeRefreshLayout swipe;

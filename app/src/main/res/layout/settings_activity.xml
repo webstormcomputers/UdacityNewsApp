@@ -6,4 +6,5 @@
     tools:context="com.webstormcomputers.udacitynewsapp.SettingsActivity"
     xmlns:tools="http://schemas.android.com/tools">
 
+
 </fragment>

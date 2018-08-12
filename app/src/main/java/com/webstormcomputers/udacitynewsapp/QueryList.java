@@ -1,11 +1,11 @@
 package com.webstormcomputers.udacitynewsapp;
 
-import android.util.Log;
 
+import android.net.Uri;
+import android.util.Log;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,12 +18,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class QueryList {
+
     public static final String LOG_TAG = QueryList.class.getSimpleName();
 
-       public static List<News> getNews(String newsUrl) {
-        URL queryUrl = createUrl(newsUrl);
-
+    public static List<News> getNews(URL mUrl) {
+        URL queryUrl = mUrl;
         String guardianJsonResponse = null;
+
+
         try {
             guardianJsonResponse = makehttpRequest(queryUrl);
         } catch (IOException e) {
@@ -32,17 +34,30 @@ public class QueryList {
         List<News> jsonResult = extractNews(guardianJsonResponse);
         return jsonResult;
     }
-    private static URL createUrl(String stringUrl){
-        URL url = null;
-        try {
-            url = new URL(stringUrl);
-        } catch (MalformedURLException e){
-            Log.e(LOG_TAG, "URL creation failure", e);
-
-        }
+    private static String createUrl(){
+        Uri.Builder builder = new Uri.Builder();
+        builder.scheme("http")
+                .encodedAuthority("content.guardianapis.com")
+                .appendPath("search")
+                .appendQueryParameter("order-by", "newest")
+                .appendQueryParameter("show-references", "author")
+                .appendQueryParameter("show-tags", "contributor")
+                .appendQueryParameter("q", "homebirth")
+                .appendQueryParameter("page-size","50")
+                .appendQueryParameter("api-key", "c742eda9-d73d-43de-ab7d-4ecb7ecebf7b");
+        String url =  builder.build().toString();
         return url;
     }
-
+    static URL createJsonQuery()
+    {
+        String queryUrl = createUrl();
+        try {
+            return new URL(queryUrl);
+        } catch (MalformedURLException e) {
+            Log.e("Queryutils", "Error creating URL: ", e);
+        return null;
+        }
+    }
     private static String makehttpRequest(URL url) throws IOException{
         String jsonResponse = "";
         if(url == null){
