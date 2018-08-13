@@ -20,7 +20,7 @@ public class SettingsActivity extends AppCompatActivity {
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.settings_main);
-            Preference minPages = findPreference(getResources().getString(R.string.settings_min_pages_label));
+            Preference minPages = findPreference(getString(R.string.settings_min_pages_label));
             bindPreferenceSummaryToValue(minPages);
 
         }
@@ -34,9 +34,9 @@ public class SettingsActivity extends AppCompatActivity {
                     CharSequence[] labels = listPreference.getEntries();
                     preference.setSummary(labels[prefIndex]);
                 }
-                else {
-                    preference.setSummary(stringValue);
-                }
+            }
+            else {
+                preference.setSummary(stringValue);
             }
             return true;
         }

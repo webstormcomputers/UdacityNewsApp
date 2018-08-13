@@ -23,7 +23,6 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity
         implements SwipeRefreshLayout.OnRefreshListener, LoaderCallbacks<List<News>> {
-    private final String GUARDIAN_URL = "http://content.guardianapis.com/search?";
 
     private NewsAdapter nAdapter;
     SwipeRefreshLayout swipe;
@@ -61,7 +60,7 @@ public class MainActivity extends AppCompatActivity
         }
         else {
             TextView loadingMessage = (TextView) findViewById(R.id.loading_message);
-            loadingMessage.setText("Check your internet connetion and swipe down to retry.");
+            loadingMessage.setText(com.webstormcomputers.udacitynewsapp.R.string.Refresh_suggestion);
             loadingMessage.setVisibility(View.VISIBLE);
         }
     }
@@ -109,7 +108,7 @@ public class MainActivity extends AppCompatActivity
                 .appendQueryParameter("show-tags", "contributor")
                 .appendQueryParameter("q", "homebirth")
                 .appendQueryParameter("page-size",minPages)
-                .appendQueryParameter("api-key", "c742eda9-d73d-43de-ab7d-4ecb7ecebf7b");
+                .appendQueryParameter("api-key", getString(com.webstormcomputers.udacitynewsapp.R.string.api_key));
         String url =  builder.build().toString();
 
         return new NewsLoader(MainActivity.this, url);

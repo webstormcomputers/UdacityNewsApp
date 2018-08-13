@@ -9,4 +9,6 @@
     <string name="settings_pages_label">Number of Pages</string>
     <string name="settings_pages_key" translatable="false">pages</string>
     <string name="settings_pages_default" translatable="false">@string/settings_min_pages_default</string>
+    <string name="api_key">c742eda9-d73d-43de-ab7d-4ecb7ecebf7b</string>
+    <string name="Refresh_suggestion">Check your internet connetion and swipe down to retry.</string>
 </resources>

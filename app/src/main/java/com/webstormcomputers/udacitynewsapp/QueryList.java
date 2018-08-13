@@ -20,7 +20,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class QueryList {
-
+    public static  final int READ_TIMEOUT = 1000;
+    public static final int CONNECT_TIMEOUT = 1500;
+    public static final int RESPONSE_CODE = 200;
     public static final String LOG_TAG = QueryList.class.getSimpleName();
 
     public static List<News> getNews(String mUrl) {
@@ -57,12 +59,12 @@ public class QueryList {
         InputStream inputStream = null;
         try {
             urlConnection = (HttpURLConnection) url.openConnection();
-            urlConnection.setReadTimeout(10000 /* milliseconds */);
-            urlConnection.setConnectTimeout(15000 /* milliseconds */);
+            urlConnection.setReadTimeout(READ_TIMEOUT /* milliseconds */);
+            urlConnection.setConnectTimeout(CONNECT_TIMEOUT /* milliseconds */);
             urlConnection.setRequestMethod("GET");
             urlConnection.connect();
 
-            if (urlConnection.getResponseCode() == 200) {
+            if (urlConnection.getResponseCode() == RESPONSE_CODE) {
                 inputStream = urlConnection.getInputStream();
                 jsonResponse = readFromStream(inputStream);
             } else {
@@ -109,7 +111,7 @@ public class QueryList {
                 String nameOfSection = jsonObject.optString("sectionName");
                 JSONArray tags = jsonObject.getJSONArray("tags");
                 String datetime = jsonObject.getString("webPublicationDate");
-                String webUrl = jsonObject.optString("webUrl").toString();
+                String webUrl = jsonObject.optString("webUrl");
                 String author;
                 JSONArray tagsArray = jsonObject.getJSONArray("tags");
                 if (tagsArray.length() > 0 )
