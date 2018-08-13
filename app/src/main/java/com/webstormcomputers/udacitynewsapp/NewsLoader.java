@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 
+import static android.provider.Settings.System.getString;
+
 /**
  *
  */
@@ -44,13 +46,9 @@ public class NewsLoader extends AsyncTaskLoader<List<News>> {
         if (mUrl == null) {
             return null;
         }
-        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getContext());
-        // String orderBy = sharedPrefs.getString(R.string.settings_order_oldest);
+
         List<News> listOfNews = null;
-
-        URL mUrl = QueryList.createJsonQuery();
         listOfNews = QueryList.getNews(mUrl);
-
         return listOfNews;
     }
 }

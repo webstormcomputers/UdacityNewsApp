@@ -25,31 +25,31 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_below="@+id/title_layout">
-    <TextView
-        android:id="@+id/name_of_section"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:tooltipText="Name of Section"
-        android:paddingLeft="15dp"
-        android:layout_weight="1"
-        android:focusable="false"/>
+        <TextView
+            android:id="@+id/name_of_section"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:tooltipText="Name of Section"
+            android:paddingLeft="15dp"
+            android:layout_weight="1"
+            android:focusable="false"/>
 
-    <TextView
-        android:id="@+id/author"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:tooltipText="Author"
-        android:paddingLeft="15dp"
-        android:layout_weight="1"
-        android:focusable="false"
-        />
-    <TextView
-        android:id="@+id/date_published"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:tooltipText="Date Published"
-        android:paddingLeft="15dp"
-        android:layout_weight="1"
-        android:focusable="false"/>
+        <TextView
+            android:id="@+id/author"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:tooltipText="Author"
+            android:paddingLeft="15dp"
+            android:layout_weight="1"
+            android:focusable="false"
+            />
+        <TextView
+            android:id="@+id/date_published"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:tooltipText="Date Published"
+            android:paddingLeft="15dp"
+            android:layout_weight="1"
+            android:focusable="false"/>
     </LinearLayout>
 </RelativeLayout>

@@ -4,10 +4,12 @@ import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Context;
 import android.content.Intent;
 import android.content.Loader;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -92,7 +94,25 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public Loader<List<News>> onCreateLoader(int i, Bundle bundle){
-        return new NewsLoader(MainActivity.this, GUARDIAN_URL);
+        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+        // getString retrieves a String value from the preferences. The second parameter is the default value for this preference.
+        String minPages = sharedPrefs.getString(
+                getString(R.string.settings_min_pages_label),
+                getString(R.string.settings_min_pages_default));
+
+        Uri.Builder builder = new Uri.Builder();
+        builder.scheme("http")
+                .encodedAuthority("content.guardianapis.com")
+                .appendPath("search")
+                .appendQueryParameter("order-by", "newest")
+                .appendQueryParameter("show-references", "author")
+                .appendQueryParameter("show-tags", "contributor")
+                .appendQueryParameter("q", "homebirth")
+                .appendQueryParameter("page-size",minPages)
+                .appendQueryParameter("api-key", "c742eda9-d73d-43de-ab7d-4ecb7ecebf7b");
+        String url =  builder.build().toString();
+
+        return new NewsLoader(MainActivity.this, url);
 
     }
 

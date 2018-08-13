@@ -3,6 +3,10 @@
     <string name="loading">Loading</string>
     <string name="settings_menu_item">Settings</string>
     <string name="settings_title">News Settings</string>
-    <string name="settings_order_oldest">Order By Oldest</string>
-    <string name="settings_order_newest">Order By Newest</string>
+    <string name="settings_min_pages_label">Minimum Pages returned</string>
+    <string name="settings_min_pages_default">20</string>
+    <!-- Strings For Pages-By Preference [CHAR LIMIT=30] -->
+    <string name="settings_pages_label">Number of Pages</string>
+    <string name="settings_pages_key" translatable="false">pages</string>
+    <string name="settings_pages_default" translatable="false">@string/settings_min_pages_default</string>
 </resources>

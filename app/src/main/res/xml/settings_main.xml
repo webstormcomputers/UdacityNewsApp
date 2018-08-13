@@ -3,13 +3,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/settings_title"
     >
-    <PreferenceCategory
-        android:title="Sort by date">
-        <ListPreference
-            android:title="Sort by date"
-            android:key="listPref"
-            android:defaultValue="1"
-            android:entries="@array/listArray"
-            android:entryValues="@array/listValues" />
-    </PreferenceCategory>
+    <EditTextPreference
+        android:defaultValue="@string/settings_min_pages_default"
+        android:inputType="number"
+        android:key="@string/settings_min_pages_label"
+        android:selectAllOnFocus="true"
+        android:title="@string/settings_min_pages_label"
+        />
 </PreferenceScreen>
